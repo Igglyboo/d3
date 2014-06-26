@@ -13,6 +13,6 @@ d3.json("assets/js/us.json", function(json) {
         .enter()
         .append("path")
         .attr("d", path)
-        .style("fill", "blue");
+        .style("fill", "green");
 
 });
