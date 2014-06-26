@@ -60,12 +60,13 @@ svg.selectAll("circle")
     .on("mouseover", function() {
         var xPosition = parseFloat(d3.select(this).attr("cx"));
         var yPosition = parseFloat(d3.select(this).attr("cy"));
+        var radius = parseFloat(d3.select(this).attr("r"));
 
         d3.select("#tooltip")
             .style("left", (xPosition + 25) + "px")
             .style("top", yPosition + "px")
             .select("#value")
-            .text("(" + Math.floor(xPosition) + "," + Math.floor(yPosition) + ")");
+            .text(Math.round(radius * 100) / 100);
 
         d3.select("#tooltip").classed("hidden", false);
 
