@@ -1,4 +1,4 @@
-var w = 100;
+var w = 1000;
 var h = 600;
 var data = {
     nodes: [
@@ -11,22 +11,46 @@ var data = {
         { name: "George" },
         { name: "Hannah" },
         { name: "Iris" },
-        { name: "Jerry" }
+        { name: "Jerry" },
+        { name: "Ike" },
+        { name: "Edmond" },
+        { name: "Brandon" },
+        { name: "Trace" },
+        { name: "Ross" },
+        { name: "Pavana" },
+        { name: "Dan" },
+        { name: "Mike" },
+        { name: "Phil" },
+        { name: "Debbie" }
     ],
     edges: [
         { source: 0, target: 1 },
         { source: 0, target: 2 },
         { source: 0, target: 3 },
-        { source: 0, target: 4 },
-        { source: 1, target: 5 },
+        { source: 0, target: 10 },
+        { source: 1, target: 10 },
         { source: 2, target: 5 },
         { source: 2, target: 5 },
-        { source: 3, target: 4 },
+        { source: 3, target: 12 },
         { source: 5, target: 8 },
-        { source: 5, target: 9 },
+        { source: 4, target: 9 },
         { source: 6, target: 7 },
-        { source: 7, target: 8 },
-        { source: 8, target: 9 }
+        { source: 7, target: 13 },
+        { source: 8, target: 9 },
+        { source: 9, target: 1 },
+        { source: 9, target: 2 },
+        { source: 10, target: 3 },
+        { source: 10, target: 4 },
+        { source: 10, target: 5 },
+        { source: 11, target: 7 },
+        { source: 12, target: 5 },
+        { source: 13, target: 4 },
+        { source: 14, target: 8 },
+        { source: 15, target: 19 },
+        { source: 16, target: 7 },
+        { source: 17, target: 1 },
+        { source: 18, target: 2 },
+        { source: 19, target: 5 }
     ]
 };
 
@@ -60,7 +84,23 @@ var nodes = svg.selectAll("circle")
     .style("fill", function(d, i) {
         return colors(i);
     })
-    .call(force.drag);
+    .call(force.drag)
+    .on("mouseover", function(d) {
+        var xPosition = parseFloat(d3.select(this).attr("cx"));
+        var yPosition = parseFloat(d3.select(this).attr("cy"));
+        var radius = parseFloat(d3.select(this).attr("r"));
+
+        d3.select("#tooltip")
+            .style("left", (xPosition + 25) + "px")
+            .style("top", yPosition + "px")
+            .select("#value")
+            .text(d.name);
+
+        d3.select("#tooltip").classed("hidden", false);
+
+    }).on("mouseout", function() {
+        d3.select("#tooltip").classed("hidden", true);
+    });
 
 force.on("tick", function() {
 
