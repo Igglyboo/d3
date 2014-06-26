@@ -51,6 +51,7 @@ var sortBars = function() {
             return i * 50;
         })
         .duration(1000)
+        .ease("elastic")
         .attr("x", function(d, i) {
             return xScale(i);
         });
@@ -68,6 +69,7 @@ var sortBars = function() {
             return i * 50;
         })
         .duration(1000)
+        .ease("elastic")
         .attr("x", function(d, i) {
             return xScale(i) + xScale.rangeBand() / 2;
         });
@@ -135,6 +137,8 @@ button.on("click", function(){
     svg.selectAll("rect")
         .data(data)
         .transition()
+        .duration(1000)
+        .ease("bounce")
         .attr(rect_attributes)
 
 });

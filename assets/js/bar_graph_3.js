@@ -52,6 +52,7 @@ var sortBars = function() {
             return i * 50;
         })
         .duration(1000)
+        .ease("elastic")
         .attr("x", function(d, i) {
             return xScale(i);
         });
@@ -69,6 +70,7 @@ var sortBars = function() {
             return i * 50;
         })
         .duration(1000)
+        .ease("elastic")
         .attr("x", function(d, i) {
             return xScale(i) + xScale.rangeBand() / 2;
         });
