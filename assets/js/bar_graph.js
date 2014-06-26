@@ -37,18 +37,6 @@ var rect_attributes = {
     }
 };
 
-var text_attributes = {
-    "text-anchor": "middle",
-    "fill": "black",
-    "font-size": "11px",
-    "font-family": "sans-serif",
-    "x": function (d, i) {
-        return xScale(i) + xScale.rangeBand() / 2;
-    },
-    "y": function (d) {
-        return h - yScale(d) + 15;
-    }
-};
 var sortOrder = false;
 var sortBars = function() {
     sortOrder = !sortOrder;
@@ -111,10 +99,3 @@ svg.selectAll("rect") //no rects currently
     }).on("mouseout", function() {
         d3.select("#tooltip").classed("hidden", true);
     });
-
-svg.selectAll("text")
-    .data(data)
-    .enter()
-    .append("text")
-    .text(function (d) {return d;})
-    .attr(text_attributes);
