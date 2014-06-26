@@ -56,7 +56,22 @@ svg.selectAll("circle")
     .data(data)
     .enter()
     .append("circle")
-    .attr(circle_attributes);
+    .attr(circle_attributes)
+    .on("mouseover", function() {
+        var xPosition = parseFloat(d3.select(this).attr("cx"));
+        var yPosition = parseFloat(d3.select(this).attr("cy"));
+
+        d3.select("#tooltip")
+            .style("left", (xPosition + 25) + "px")
+            .style("top", yPosition + "px")
+            .select("#value")
+            .text("(" + Math.floor(xPosition) + "," + Math.floor(yPosition) + ")");
+
+        d3.select("#tooltip").classed("hidden", false);
+
+    }).on("mouseout", function() {
+        d3.select("#tooltip").classed("hidden", true);
+    });
 
 
 //Create X axis
