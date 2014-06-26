@@ -137,6 +137,9 @@ button.on("click", function(){
     svg.selectAll("rect")
         .data(data)
         .transition()
+        .delay(function(d, i) {
+            return i * 100;
+        })
         .duration(1000)
         .ease("bounce")
         .attr(rect_attributes)
