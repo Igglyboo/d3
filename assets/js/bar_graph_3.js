@@ -14,8 +14,6 @@ var yScale = d3.scale.linear()
     .domain([0, d3.max(data)])
     .range([0, h]);
 
-var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
-
 var svg_attributes = {
     "width": w,
     "height": h
@@ -37,6 +35,7 @@ var rect_attributes = {
     }
 };
 
+//NEW FOR bar graph 3
 var sortOrder = false;
 var sortBars = function() {
     sortOrder = !sortOrder;
@@ -75,6 +74,9 @@ var sortBars = function() {
         });
 
 };
+//NEW FOR bar graph 3
+
+var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
 
 svg.attr(svg_attributes).style({"outline": "solid 2px black"});
 svg.selectAll("rect") //no rects currently
