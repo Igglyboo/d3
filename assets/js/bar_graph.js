@@ -1,7 +1,13 @@
-var data = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17];
 var w = 1200;
 var h = 600;
 var barPadding = 2;
+
+var data = [];
+var data_amount = getRandomInt(15, 30);
+for (var i = 0; i < data_amount; i++) {
+    data.push(getRandomInt(5, 30));
+}
+
 var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
 
 var svg_attributes = {
@@ -21,7 +27,7 @@ var rect_attributes = {
         return d * 15;
     },
     "fill": function (d) {
-        return "rgb(255," + (d * 10) + ",0)"; //color them based on their data
+        return "rgb(255," + (d * 8) + ",70)"; //color them based on their data
     }
 };
 
