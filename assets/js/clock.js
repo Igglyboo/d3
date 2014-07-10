@@ -9,7 +9,7 @@ var new_pos = function(degrees){
     };
 };
 var svg = d3.select("body").append("svg").attr({width: width, height: height}).style("border", "solid black 16px").style("border-radius", "32px").style("background-color", "steelblue ");
-var circle = svg.append("circle").attr(circle_attr).style({"fill": "steelblue "});
+//var circle = svg.append("circle").attr(circle_attr).style({"fill": "steelblue "});
 var hands = svg.selectAll("line").data([new Date().getMinutes(), new Date().getSeconds(), new Date().getHours()]).enter()
     .append("line").attr({
     x1: circle_attr.cx,
