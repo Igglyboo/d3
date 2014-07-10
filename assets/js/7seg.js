@@ -7,7 +7,7 @@ var numbers = [];
 for(var counter = 1; counter < 9; counter++) {
     var svg = d3.select("body").append("svg").attr({width: width, height: height});
     numbers.push(svg.selectAll("polygon")
-        .data(to7seg("8"))
+        .data(to7seg("15"))
         .enter()
         .append("polygon")
         .attr({
@@ -41,7 +41,8 @@ var input = div.selectAll("input")
         .attr({
             "type": "number",
             "min": 0,
-            "max": 15
+            "max": 15,
+            "value": 15
         })
         .style({
             "width": "80px",
